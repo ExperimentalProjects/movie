@@ -4,9 +4,9 @@ import styled from "styled-components";
 function MovieCard(props) {
   return (
     <Container>
-      <Poster src={props.Poster} />
+      <Poster src={props.Poster} alt="poster" />
       <ColumnDiv>
-        <div>{props.Title}</div>
+        <div><strong>{props.Title}</strong></div>
         <div>{props.Year}</div>
       </ColumnDiv>
     </Container>
@@ -16,13 +16,16 @@ function MovieCard(props) {
 export default MovieCard;
 
 const Container = styled.div`
-  box-shadow: 1px 1px 1px 1px #888888;
+  box-shadow: -2px -2px 15px 3px #dedada;
   border-radius: 4px;
   padding: 10px;
   color: black;
   margin: 10px;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  width: ${window.innerWidth * 0.6}px;
+  max-width: 600px;
 `;
 
 const ColumnDiv = styled.div`

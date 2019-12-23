@@ -12,15 +12,15 @@ function MovieDetail(props) {
     dispatch(loadMovieDetails(movieId));
   }, [movieId]);
   const selectedMovie = useSelector(state => state.user.selectedMovie || {});
-  const {Title,Poster, ...rest } = selectedMovie
+  const { Title, Poster, ...rest } = selectedMovie
   return (
     <AppRouteContainer>
       <Container>
-      <h1>{selectedMovie.Title}</h1>
-      <img src={selectedMovie.Poster} />
-      <ColumnDiv>
-      { Object.keys(rest).map((key)=> typeof rest[key] === "string" ?  <span><strong>{key}:</strong>{rest[key]}</span> : null)}
-      </ColumnDiv>
+        <h1>{selectedMovie.Title}</h1>
+        <img src={selectedMovie.Poster} />
+        <ColumnDiv>
+          {Object.keys(rest).map((key) => typeof rest[key] === "string" ? <span><strong>{key}:</strong>{rest[key]}</span> : null)}
+        </ColumnDiv>
       </Container>
     </AppRouteContainer>
   );

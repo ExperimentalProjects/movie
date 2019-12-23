@@ -15,24 +15,27 @@ import Addmovie from "./containers/addMovie";
 export default function App() {
   return (
     <Provider store={store}>
-    <Router>
-      <div>
-        <Switch>
-          <Route path="/detail">
-            <MovieDetail />
-          </Route>
-          <Route path="/add">
-            <Addmovie />
-          </Route>
-          <Route path="/dashboard">
-            <Home />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+      <Router>
+        <div>
+          <Switch>
+            <Route path="/detail">
+              <MovieDetail />
+            </Route>
+            <Route path="/add">
+              <Addmovie />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/dashboard">
+              <Home />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </Provider>
   );
 }

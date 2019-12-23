@@ -2,20 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { loadLoggedInUserAction } from "./store/reducers/user";
 import {
-    Redirect
-  } from "react-router-dom";
+  Redirect
+} from "react-router-dom";
 
 class AppRouteContainer extends React.Component {
   componentDidMount() {
     this.props.dispatch(loadLoggedInUserAction());
-  }
-
-  componentDidUpdate(prevProps) {
-    const { fetchingUserSession, isLoggedIn } = this.props;
-    if (!fetchingUserSession && !isLoggedIn) {
-      // redirect to login route if not already there
-      
-    }
   }
 
   render() {
