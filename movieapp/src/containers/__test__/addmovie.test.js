@@ -5,7 +5,9 @@ import AddMovie from "../addMovie";
 
 jest.mock("react-redux", () => ({
     useSelector: jest.fn(fn => fn({
-        user: {}
+        user: {
+            isLoggedIn: true, 
+        }
     })),
     useDispatch: () => jest.fn()
   }));
@@ -14,8 +16,8 @@ jest.mock("react-redux", () => ({
     Redirect: <div></div>
   }));
 
-test("renders app", () => {
+test("renders AddMovie", () => {
   render(<AddMovie />);
-  expect(screen.getByText("Genre")).toBeInTheDocument();
-  expect(screen.getByText("Title")).toBeInTheDocument();
+  expect(screen.getByText("Genre:")).toBeInTheDocument();
+  expect(screen.getByText("Title:")).toBeInTheDocument();
 });

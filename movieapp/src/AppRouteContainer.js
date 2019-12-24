@@ -1,5 +1,4 @@
 import React, {useEffect} from "react";
-import { connect } from "react-redux";
 import { useSelector, useDispatch } from "react-redux";
 import { loadLoggedInUserAction } from "./store/reducers/user";
 import {
