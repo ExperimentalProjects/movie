@@ -1,31 +1,23 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { loadLoggedInUserAction } from "./store/reducers/user";
 import {
   Redirect
 } from "react-router-dom";
 
-class AppRouteContainer extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(loadLoggedInUserAction());
-  }
-
-  render() {
-    if (this.props.isLoggedIn) {
-      return <>{this.props.children}</>;
-    } else if (this.props.fetchingUserSession) {
-      return <div>fetching user...</div>;
-    } else {
-      return <Redirect to="/login" />;
-    }
+export default function AppRouteContainer (props) {
+  let dispatch = useDispatch()
+  let isLoggedIn = useSelector(state => state.user.isLoggedIn)
+  let fetchingUserSession = useSelector(state => state.user.fetchingUserSession)
+  useEffect(() => {
+    dispatch(loadLoggedInUserAction())
+  }, []);
+  if (isLoggedIn) {
+    return <>{props.children}</>;
+  } else if (fetchingUserSession) {
+    return <div>fetching user...</div>;
+  } else {
+    return <Redirect to="/login" />;
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    isLoggedIn: state.user.isLoggedIn,
-    fetchingUserSession: state.user.fetchingUserSession
-  };
-}
-
-export default connect(mapStateToProps, null)(AppRouteContainer);

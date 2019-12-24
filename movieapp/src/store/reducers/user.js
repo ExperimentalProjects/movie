@@ -33,10 +33,11 @@ export const userReducer = (state = INITIAL_STATE, action) => {
       };
 
     case LOAD_DASHBOARD_MOVIES:
+      let displayMovies =  Array.isArray(action.data) ? [...action.data, ...state.localMovie] : []
       return {
         ...state,
         movies: action.data,
-        displayMovies: [...action.data, ...state.localMovie]
+        displayMovies: displayMovies
       };
 
     case LOAD_MOVIE_DETAIL:
